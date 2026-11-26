@@ -66,13 +66,13 @@
       transform: translateY(-2px);
     }
 
-    section.staff-container {
+    section.container {
       width: 100%;
       max-width: 900px;
       margin-top: 2rem;
     }
 
-    section.staff-container h2 {
+    section.container h2 {
       font-size: 1.8rem;
       text-align: center;
       margin-bottom: 1.5rem;
@@ -81,12 +81,57 @@
       padding-bottom: 0.5rem;
     }
 
-    .staff-grid {
+    /* General Cards & Grid */
+    .grid-container {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 1.2rem;
     }
 
+    .info-card {
+      background-color: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 10px;
+      padding: 1.5rem;
+      text-align: left;
+      transition: border-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .info-card:hover {
+      border-color: #38bdf8;
+      transform: translateY(-2px);
+    }
+
+    .info-card h3 {
+      font-size: 1.25rem;
+      color: #38bdf8;
+      margin-bottom: 0.8rem;
+    }
+
+    .info-card p {
+      font-size: 0.95rem;
+      color: #cbd5e1;
+      line-height: 1.5;
+    }
+
+    .app-btn {
+      display: inline-block;
+      margin-top: 1rem;
+      background-color: #0284c7;
+      color: #ffffff;
+      padding: 0.6rem 1.2rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 6px;
+      transition: background-color 0.2s ease;
+    }
+
+    .app-btn:hover {
+      background-color: #0369a1;
+    }
+
+    /* Staff Cards */
     .staff-card {
       background-color: #1e293b;
       border: 1px solid #334155;
@@ -127,13 +172,47 @@
   <header>
     <img src="1000471838.jpg" alt="EHRP Logo">
     <h1>Emergency Hamburg Roleplay</h1>
-    <p class="subtitle">Official Staff Team & Server Directory</p>
-    <a href="https://discord.gg/wRhERaPV9T" target="_blank" class="join-btn">Join Discord Server</a>
+    <p class="subtitle">Official Server Hub, Staff Directory & Guidelines</p>
+    <a href="https://discord.gg/wRhERaPV9T" target="_blank" class="join-btn">Join Official Discord</a>
   </header>
 
-  <section class="staff-container">
+  <!-- ABOUT & GUIDE SECTION -->
+  <section class="container">
+    <h2>What We Do in EHRP</h2>
+    <div class="grid-container">
+      <div class="info-card">
+        <h3>About EHRP</h3>
+        <p>Emergency Hamburg Roleplay (EHRP) is a realistic Roblox roleplay community based on Emergency Hamburg. Players can patrol as Law Enforcement, respond to emergencies as Fire & Rescue, service vehicles, drive buses/trucks, or act as civilians and criminals.</p>
+      </div>
+      <div class="info-card">
+        <h3>Server Startup (SSU) Guide</h3>
+        <p><strong>What is an SSU?</strong> Server Startup (SSU) is when our staff opens up private servers for scheduled, high-quality roleplay sessions.</p>
+        <p style="margin-top: 0.5rem;"><strong>When is SSU?</strong> SSU announcements, start times, and server codes are posted live in our Discord server under the <code>#ssu-announcements</code> channel.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- APPLICATIONS SECTION -->
+  <section class="container">
+    <h2>Applications & Forms</h2>
+    <div class="grid-container">
+      <div class="info-card">
+        <h3>Staff Team Application</h3>
+        <p>Want to help moderate EHRP? Staff applications open periodically in our Discord server. Check the <code>#applications</code> channel to apply when open.</p>
+        <a href="https://discord.gg/wRhERaPV9T" target="_blank" class="app-btn">Check Applications in Discord</a>
+      </div>
+      <div class="info-card">
+        <h3>Department Applications</h3>
+        <p>Apply for whitelisted departments including Police Leadership, Emergency Medical Services (EMS), and specialized units.</p>
+        <a href="https://discord.gg/wRhERaPV9T" target="_blank" class="app-btn">Apply in Discord</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- STAFF SECTION -->
+  <section class="container">
     <h2>Staff Leadership</h2>
-    <div class="staff-grid">
+    <div class="grid-container">
       <div class="staff-card">
         <h3>Medsy</h3>
         <p>Founder</p>
@@ -155,7 +234,7 @@
         <p>Junior Director</p>
       </div>
       <div class="staff-card">
-        <h3>SerGent_keigh17</h3>
+        <h3>SurGent_Keigh17</h3>
         <p>Lead Manager</p>
       </div>
       <div class="staff-card">
@@ -167,7 +246,7 @@
         <p>Senior Administrator</p>
       </div>
       <div class="staff-card">
-        <h3>Bruce Wayne</h3>
+        <h3>BRUCE WAYNE</h3>
         <p>Senior Administrator</p>
       </div>
       <div class="staff-card">
