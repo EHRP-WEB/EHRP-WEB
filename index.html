@@ -131,6 +131,41 @@
       background-color: #0369a1;
     }
 
+    /* Staff Toggle Button & Section */
+    .staff-toggle-wrapper {
+      text-align: center;
+      margin: 2.5rem 0 1rem 0;
+    }
+
+    .staff-toggle-btn {
+      background-color: #38bdf8;
+      color: #0f172a;
+      font-size: 1.1rem;
+      font-weight: bold;
+      padding: 0.9rem 2rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 4px 14px rgba(56, 189, 248, 0.3);
+      transition: background-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .staff-toggle-btn:hover {
+      background-color: #0284c7;
+      color: #ffffff;
+      transform: translateY(-2px);
+    }
+
+    #staff-section {
+      display: none; /* Hidden by default until button is clicked */
+      animation: fadeIn 0.4s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
     /* Staff Cards */
     .staff-card {
       background-color: #1e293b;
@@ -204,8 +239,13 @@
     </div>
   </section>
 
-  <!-- STAFF SECTION -->
-  <section class="container">
+  <!-- OUR STAFF BUTTON WRAPPER -->
+  <div class="staff-toggle-wrapper">
+    <button class="staff-toggle-btn" onclick="toggleStaff()">Our Staff</button>
+  </div>
+
+  <!-- POP-UP / TOGGLEABLE STAFF SECTION -->
+  <section class="container" id="staff-section">
     <h2>Staff Leadership</h2>
     <div class="grid-container">
       <div class="staff-card">
@@ -254,6 +294,17 @@
   <footer>
     <p>&copy; Emergency Hamburg Roleplay (EHRP). All rights reserved.</p>
   </footer>
+
+  <script>
+    function toggleStaff() {
+      const staffSec = document.getElementById('staff-section');
+      if (staffSec.style.display === 'none' || staffSec.style.display === '') {
+        staffSec.style.display = 'block';
+      } else {
+        staffSec.style.display = 'none';
+      }
+    }
+  </script>
 
 </body>
 </html>
