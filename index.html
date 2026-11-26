@@ -1,331 +1,185 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!----- test ----->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EHRP - Emergency Hamburg Roleplay</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Emergency Hamburg Roleplay (EHRP)</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
 
-        body {
-            background: #e65c00; 
-            background: linear-gradient(135deg, #e65c00, #f9d423);
-            color: #ffffff;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
+    body {
+      background-color: #0f172a;
+      color: #f8fafc;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1rem;
+    }
 
-        .container {
-            background: rgba(0, 0, 0, 0.45);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 20px;
-            padding: 35px 25px;
-            width: 100%;
-            max-width: 480px;
-            text-align: center;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
-        }
+    header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
 
-        .server-pic {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            border: 3px solid #ff7e5f;
-            box-shadow: 0 0 20px rgba(255, 126, 95, 0.6);
-            object-fit: cover;
-            margin-bottom: 15px;
-            background: #000;
-        }
+    header img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid #38bdf8;
+      box-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
+      margin-bottom: 1rem;
+    }
 
-        h1 {
-            font-size: 2.2rem;
-            margin-bottom: 5px;
-            color: #ffffff;
-            text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-            font-weight: 800;
-        }
+    h1 {
+      font-size: 2.2rem;
+      color: #38bdf8;
+      margin-bottom: 0.5rem;
+    }
 
-        .tagline {
-            font-size: 0.95rem;
-            color: #ffeaa7;
-            margin-bottom: 20px;
-            font-weight: 600;
-        }
+    p.subtitle {
+      color: #94a3b8;
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+    }
 
-        .info-box {
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 12px;
-            padding: 15px;
-            margin-bottom: 20px;
-            text-align: left;
-            font-size: 0.9rem;
-            line-height: 1.5;
-            color: #f5f6fa;
-            border-left: 4px solid #ff7e5f;
-        }
+    .join-btn {
+      display: inline-block;
+      background-color: #5865F2;
+      color: #ffffff;
+      padding: 0.8rem 1.8rem;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: background-color 0.2s ease, transform 0.2s ease;
+      box-shadow: 0 4px 12px rgba(88, 101, 242, 0.3);
+    }
 
-        .section-title {
-            color: #ffeaa7;
-            text-align: left;
-            margin-bottom: 12px;
-            font-size: 1.05rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
+    .join-btn:hover {
+      background-color: #4752C4;
+      transform: translateY(-2px);
+    }
 
-        /* Action Buttons Grid */
-        .action-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            margin-bottom: 25px;
-        }
+    section.staff-container {
+      width: 100%;
+      max-width: 900px;
+      margin-top: 2rem;
+    }
 
-        .action-btn {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: #ffffff;
-            padding: 12px 10px;
-            border-radius: 10px;
-            font-weight: 600;
-            font-size: 0.85rem;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
+    section.staff-container h2 {
+      font-size: 1.8rem;
+      text-align: center;
+      margin-bottom: 1.5rem;
+      color: #f1f5f9;
+      border-bottom: 2px solid #334155;
+      padding-bottom: 0.5rem;
+    }
 
-        .action-btn:hover {
-            background: rgba(255, 126, 95, 0.4);
-            border-color: #ff7e5f;
-            transform: translateY(-2px);
-        }
+    .staff-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.2rem;
+    }
 
-        .action-btn.full-width {
-            grid-column: span 2;
-        }
+    .staff-card {
+      background-color: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 10px;
+      padding: 1.2rem;
+      text-align: center;
+      transition: border-color 0.2s ease, transform 0.2s ease;
+    }
 
-        /* Staff Section */
-        .staff-section {
-            margin-bottom: 25px;
-            text-align: left;
-        }
+    .staff-card:hover {
+      border-color: #38bdf8;
+      transform: translateY(-3px);
+    }
 
-        .staff-list {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
+    .staff-card h3 {
+      font-size: 1.2rem;
+      color: #f8fafc;
+      margin-bottom: 0.3rem;
+    }
 
-        .staff-card {
-            background: rgba(255, 255, 255, 0.08);
-            padding: 10px 14px;
-            border-radius: 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 0.9rem;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
+    .staff-card p {
+      font-size: 0.95rem;
+      color: #38bdf8;
+      font-weight: 600;
+    }
 
-        .staff-name {
-            font-weight: 700;
-            color: #ffffff;
-        }
-
-        .staff-role {
-            padding: 3px 10px;
-            border-radius: 12px;
-            font-size: 0.75rem;
-            font-weight: bold;
-            text-transform: uppercase;
-        }
-
-        .owner-role {
-            background: linear-gradient(45deg, #ff416c, #ff4b2b);
-            color: #fff;
-            box-shadow: 0 2px 8px rgba(255, 65, 108, 0.4);
-        }
-
-        .admin-role {
-            background: linear-gradient(45deg, #f857a6, #ff5858);
-            color: #fff;
-            box-shadow: 0 2px 8px rgba(248, 87, 166, 0.4);
-        }
-
-        .join-btn {
-            display: block;
-            width: 100%;
-            text-decoration: none;
-            color: #fff;
-            background: linear-gradient(45deg, #ff7e5f, #feb47b);
-            padding: 14px 20px;
-            border-radius: 10px;
-            font-weight: bold;
-            font-size: 1rem;
-            box-shadow: 0 5px 15px rgba(255, 126, 95, 0.4);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        .join-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(255, 126, 95, 0.6);
-        }
-
-        /* Modal Styles */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.75);
-            backdrop-filter: blur(8px);
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            z-index: 1000;
-        }
-
-        .modal-content {
-            background: #1a1a2e;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 16px;
-            padding: 25px;
-            max-width: 420px;
-            width: 100%;
-            text-align: left;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
-            position: relative;
-        }
-
-        .modal-content h3 {
-            color: #ff7e5f;
-            margin-bottom: 12px;
-            font-size: 1.2rem;
-        }
-
-        .modal-content ul {
-            list-style-type: disc;
-            padding-left: 20px;
-            font-size: 0.9rem;
-            line-height: 1.6;
-            color: #dcdde1;
-            margin-bottom: 20px;
-        }
-
-        .close-btn {
-            background: #ff7e5f;
-            border: none;
-            color: white;
-            padding: 8px 16px;
-            border-radius: 8px;
-            font-weight: bold;
-            cursor: pointer;
-            float: right;
-        }
-    </style>
+    footer {
+      margin-top: auto;
+      padding-top: 3rem;
+      color: #64748b;
+      font-size: 0.9rem;
+      text-align: center;
+    }
+  </style>
 </head>
 <body>
 
-    <div class="container">
-        <!-- Self-contained EHRP Logo -->
-        <img class="server-pic" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><rect width='200' height='200' rx='40' fill='%23d0d0d0'/><rect x='35' y='35' width='130' height='130' fill='%23e2e2e2' transform='rotate(-6 100 100)' stroke='%23b0b0b0' stroke-width='2'/><text x='25' y='110' font-family='Arial Black, sans-serif' font-weight='900' font-size='42'><tspan fill='%23b71c1c'>E</tspan><tspan fill='%23fbc02d'>H</tspan><tspan fill='%232e7d32'>R</tspan><tspan fill='%231565c0'>P</tspan></text><text x='25' y='128' font-family='Arial, sans-serif' font-weight='bold' font-size='9' fill='%23555'>EHRP | Emergency Hamburg Roleplay</text></svg>" alt="EHRP Server Logo">
+  <header>
+    <img src="1000471838.jpg" alt="EHRP Logo">
+    <h1>Emergency Hamburg Roleplay</h1>
+    <p class="subtitle">Official Staff Team & Server Directory</p>
+    <a href="https://discord.gg/wRhERaPV9T" target="_blank" class="join-btn">Join Discord Server</a>
+  </header>
 
-        <h1>EHRP</h1>
-        <p class="tagline">Official Emergency Hamburg Roleplay Community</p>
-
-        <div class="info-box">
-            <h3>About / Server Info</h3>
-            <p>Welcome to <strong>EHRP</strong>! We are a serious & exciting Emergency Hamburg roleplay community featuring realistic scenarios, active events, and fair moderation.</p>
-        </div>
-
-        <!-- Interactive Buttons -->
-        <div class="app-section">
-            <h3 class="section-title">📌 Quick Information</h3>
-            <div class="action-grid">
-                <button class="action-btn" onclick="openModal('appModal')">📝 How to Apply</button>
-                <button class="action-btn" onclick="openModal('featureModal')">✨ Why EHRP?</button>
-                <button class="action-btn full-width" onclick="openModal('rulesModal')">📜 Server Rules</button>
-            </div>
-        </div>
-
-        <!-- Staff Team -->
-        <div class="staff-section">
-            <h3 class="section-title">👥 Server Staff Team</h3>
-            <div class="staff-list">
-                <div class="staff-card">
-                    <span class="staff-name">Celestial_Lord</span>
-                    <span class="staff-role owner-role">Founder / Owner</span>
-                </div>
-                <div class="staff-card">
-                    <span class="staff-name">KOD</span>
-                    <span class="staff-role admin-role">Senior Administrator</span>
-                </div>
-            </div>
-        </div>
-
-        <a href="https://discord.gg/wRhERaPV9T" target="_blank" class="join-btn">🚨 Join EHRP Discord Server</a>
+  <section class="staff-container">
+    <h2>Staff Leadership</h2>
+    <div class="staff-grid">
+      <div class="staff-card">
+        <h3>Medsy</h3>
+        <p>Founder</p>
+      </div>
+      <div class="staff-card">
+        <h3>Chris</h3>
+        <p>Co-Founder</p>
+      </div>
+      <div class="staff-card">
+        <h3>350Z</h3>
+        <p>Junior Owner</p>
+      </div>
+      <div class="staff-card">
+        <h3>james</h3>
+        <p>Deputy Director</p>
+      </div>
+      <div class="staff-card">
+        <h3>5xabu</h3>
+        <p>Junior Director</p>
+      </div>
+      <div class="staff-card">
+        <h3>SerGent_keigh17</h3>
+        <p>Lead Manager</p>
+      </div>
+      <div class="staff-card">
+        <h3>KOD</h3>
+        <p>Senior Administrator</p>
+      </div>
+      <div class="staff-card">
+        <h3>Md_frq123</h3>
+        <p>Senior Administrator</p>
+      </div>
+      <div class="staff-card">
+        <h3>Bruce Wayne</h3>
+        <p>Senior Administrator</p>
+      </div>
+      <div class="staff-card">
+        <h3>JustHarryVibe</h3>
+        <p>Junior Administrator</p>
+      </div>
     </div>
+  </section>
 
-    <!-- Application Modal -->
-    <div id="appModal" class="modal">
-        <div class="modal-content">
-            <h3>📝 Staff Applications</h3>
-            <ul>
-                <li><strong>Staff Applications:</strong> Open in our Discord under <code>#staff-apps</code>.</li>
-                <li><strong>What We Look For:</strong> Active players, professional attitude, and team communication.</li>
-                <li><strong>How to Apply:</strong> Join the Discord server below and submit your application ticket!</li>
-            </ul>
-            <button class="close-btn" onclick="closeModal('appModal')">Close</button>
-        </div>
-    </div>
-
-    <!-- Why EHRP Modal -->
-    <div id="featureModal" class="modal">
-        <div class="modal-content">
-            <h3>✨ Why Join EHRP?</h3>
-            <ul>
-                <li><strong>Immersive RP:</strong> Realistic Emergency Hamburg scenarios & daily dispatches.</li>
-                <li><strong>Fair Moderation:</strong> Friendly and active staff dedicated to quality RP.</li>
-                <li><strong>Community Events:</strong> Large-scale emergency incidents and server events.</li>
-            </ul>
-            <button class="close-btn" onclick="closeModal('featureModal')">Close</button>
-        </div>
-    </div>
-
-    <!-- Rules Modal -->
-    <div id="rulesModal" class="modal">
-        <div class="modal-content">
-            <h3>📜 Server Rules</h3>
-            <ul>
-                <li>Respect all community members and staff.</li>
-                <li>No FailRP, Random Deathmatch (RDM), or Vehicle Deathmatch (VDM).</li>
-                <li>Follow staff instructions during active roleplay sessions.</li>
-                <li>Keep chat and voice communications clean and constructive.</li>
-            </ul>
-            <button class="close-btn" onclick="closeModal('rulesModal')">Close</button>
-        </div>
-    </div>
-
-    <script>
-        function openModal(id) {
-            document.getElementById(id).style.display = 'flex';
-        }
-        function closeModal(id) {
-            document.getElementById(id).style.display = 'none';
-        }
-    </script>
+  <footer>
+    <p>&copy; Emergency Hamburg Roleplay (EHRP). All rights reserved.</p>
+  </footer>
 
 </body>
 </html>
